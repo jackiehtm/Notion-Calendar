@@ -3,14 +3,14 @@
 <style>
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,600');
 :root {
-    --calendar-bg-color: #f4f4f4; /* Light background */
-    --calendar-font-color: #333;   /* Dark text */
-    --weekdays-border-bottom-color: #ccc; /* Light border */
-    --calendar-date-hover-color: #ddd;   /* Light hover */
-    --calendar-current-date-color: #e4e4e4; /* Subtle current date color */
-    --calendar-today-color: #2196F3;  /* Blue for today */
+    --calendar-bg-color: #fff; /* White background for the calendar */
+    --calendar-font-color: #333;   /* Dark text for readability */
+    --weekdays-border-bottom-color: #ddd; /* Light border for weekdays */
+    --calendar-date-hover-color: #f0f0f0;   /* Light hover effect */
+    --calendar-current-date-color: #e0e0e0; /* Light current date color */
+    --calendar-today-color: #2196F3;  /* Blue color for today's date */
     --calendar-today-innerborder-color: #fff; /* White inner border for today's date */
-    --calendar-nextprev-bg-color: #f0f0f0; /* Light background for buttons */
+    --calendar-nextprev-bg-color: #f9f9f9; /* Light background for next/prev buttons */
 }
 
 * {
@@ -20,12 +20,13 @@
 
 body {
     background-color: #f9f9f9; /* Light background for the page */
+    font-family: 'Nunito', sans-serif; /* Body font */
 }
 
 .calendar {
     font-family: 'Nunito', sans-serif;
     position: relative;
-    max-width: 400px; /* Adjust as needed */
+    max-width: 400px; /* Max width for calendar */
     min-width: 320px;
     background: var(--calendar-bg-color);
     color: var(--calendar-font-color);
@@ -34,6 +35,7 @@ body {
     overflow: hidden;
     font-weight: normal;
     border-radius: 8px; /* Optional: Adds rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for better separation */
 }
 
 .calendar-inner {
@@ -47,9 +49,9 @@ body {
 }
 
 .calendar .calendar-inner .calendar-body div {
-    padding: 4px;
-    min-height: 30px;
-    line-height: 30px;
+    padding: 8px;
+    min-height: 40px;
+    line-height: 40px;
     border: 1px solid transparent;
     margin: 10px 2px 0px;
 }
@@ -136,6 +138,7 @@ body {
     background: var(--calendar-nextprev-bg-color);
     margin: 0 0 10px 0;
     border-radius: 4px;
+    color: #333;
 }
 </style>
 </head>
@@ -263,4 +266,20 @@ function CalendarControl() {
             ".calendar .calendar-body"
           ).innerHTML += `<div class="empty-dates"></div>`;
         } else {
-          let currentMonth = calendar
+          let currentMonth = calendar;
+          // Rest of the date rendering logic
+        }
+      }
+    },
+  };
+
+  // Initialize calendar rendering
+  calendarControl.plotSelectors();
+  calendarControl.plotDates();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  new CalendarControl();
+});
+</script>
+</html>
